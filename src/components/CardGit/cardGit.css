@@ -1,0 +1,12 @@
+.card{
+    display: inline-block;
+    margin:10px 10px 0 0;
+    width:15%;
+}
+
+@media screen and (max-width: 900px){
+    .card{
+        width:45%;
+        margin:7px 7px 0 7px;
+    }
+}

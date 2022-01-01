@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import CardGit from './components/CardGit';
+import api from './api';
+import { Component } from 'react/cjs/react.production.min';
+import Intro from './components/Intro';
 
-function App() {
+class App extends Component {
+
+  state = {
+    repos: [],
+  }
+  
+  async componentDidMount(){
+    const response = await api.get('/repos');
+
+    this.setState({repos: response.data});
+  }
+
+  render() {
+
+    const { repos } = this.state;
+    const cards = repos.map(repo => {
+      if (repo.name !== 'matholi') {
+        return (
+          <CardGit key={repo.id} title={repo.name} language={repo.language} html_url={repo.html_url} />
+        );
+      }
+    }
+    );
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Intro/>   
+      {cards}
+    </>
   );
+  }
 }
 
 export default App;
