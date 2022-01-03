@@ -1,38 +1,17 @@
-import CardGit from './components/CardGit';
-import api from './api';
-import { Component } from 'react/cjs/react.production.min';
-import Intro from './components/Intro';
+import Rotas from './routes';
 
-class App extends Component {
-
-  state = {
-    repos: [],
-  }
-  
-  async componentDidMount(){
-    const response = await api.get('/repos');
-
-    this.setState({repos: response.data});
-  }
-
-  render() {
-
-    const { repos } = this.state;
-    const cards = repos.map(repo => {
-      if (repo.name !== 'matholi') {
-        return (
-          <CardGit key={repo.id} title={repo.name} language={repo.language} html_url={repo.html_url} />
-        );
-      }
-    }
-    );
-  return (
+const App = () => {
+  return(
     <>
-      <Intro/>   
-      {cards}
+      <header>
+        <nav>
+          <a href="/">Home</a>
+          <a href="/projects">Projects</a>
+        </nav>
+      </header>
+      <Rotas/>
     </>
-  );
-  }
+  )
 }
 
 export default App;
