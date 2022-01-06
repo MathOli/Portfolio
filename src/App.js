@@ -1,16 +1,15 @@
 import Rotas from './routes';
+import Aside from './components/Aside';
+import './App.css';
 
 const App = () => {
   return(
-    <>
-      <header>
-        <nav>
-          <a href="/">Home</a>
-          <a href="/projects">Projects</a>
-        </nav>
-      </header>
-      <Rotas/>
-    </>
+    <section>
+        <Aside />
+        <main>
+          <Rotas/>
+        </main>
+    </section>
   )
 }
 

@@ -27,9 +27,9 @@ class Projects extends Component {
         }
         );
         return (
-            <>
+            <div className="container">
                 {cards}
-            </>
+            </div>
         );
     }
 }
